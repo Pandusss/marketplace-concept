@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RUBERI · мобильная версия</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Onest:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg: #0e0e0f; --ink: #f2f1ec; --muted: #8f8e88; --line: #2a2a2e; --accent: #c8f03c; --mono: "JetBrains Mono", ui-monospace, monospace; }
+    * { box-sizing: border-box; } body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 "Onest", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; } h1, h2, p { margin: 0; }
+    .top { display: flex; justify-content: space-between; align-items: end; gap: 32px; flex-wrap: wrap; padding: 56px 48px 40px; }
+    .kicker { font: 500 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+    h1 { margin-top: 14px; font-size: clamp(34px, 4.6vw, 60px); line-height: 1; letter-spacing: -.045em; font-weight: 600; } h1 i { font-style: normal; color: var(--accent); }
+    .top p { max-width: 460px; color: #c4c3bd; font-size: 15px; }
+    .nav { display: flex; gap: 8px; margin-top: 18px; font: 12px var(--mono); } .nav a { padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; color: var(--muted); } .nav a:hover { color: var(--ink); border-color: #55554f; }
+    .rail { display: flex; gap: 40px; overflow-x: auto; padding: 8px 48px 64px; scroll-snap-type: x proximity; }
+    .phone { flex: 0 0 auto; scroll-snap-align: center; }
+    .phone-body { width: 414px; height: 868px; padding: 12px; border-radius: 56px; background: #1b1b1e; box-shadow: 0 0 0 1px #34343a, 0 40px 80px -30px #000; }
+    .phone-screen { position: relative; width: 390px; height: 844px; overflow: hidden; border-radius: 44px; background: #fbfbf9; }
+    .phone-screen::before { content: ""; position: absolute; z-index: 2; top: 10px; left: 50%; width: 112px; height: 30px; margin-left: -56px; border-radius: 16px; background: #0b0b0c; pointer-events: none; }
+    .phone iframe { width: 390px; height: 800px; margin-top: 44px; border: 0; display: block; background: #fbfbf9; }
+    .phone-cap { display: flex; justify-content: space-between; align-items: baseline; margin: 18px 12px 0; } .phone-cap b { font-weight: 600; letter-spacing: -.01em; } .phone-cap span { font: 12px var(--mono); color: var(--muted); }
+    .phone-note { max-width: 390px; margin: 6px 12px 0; font-size: 13px; color: var(--muted); }
+    .themes { display: inline-flex; gap: 2px; margin-top: 18px; padding: 3px; border: 1px solid var(--line); border-radius: 10px; font: 12px var(--mono); }
+    .themes::before { content: "Дизайн"; align-self: center; padding: 0 10px 0 8px; color: var(--muted); }
+    .themes button { padding: 8px 14px; border: 0; border-radius: 7px; background: none; color: var(--muted); font: inherit; cursor: pointer; } .themes button:hover { color: var(--ink); }
+    .themes button[aria-selected="true"] { background: var(--ink); color: var(--bg); }
+    .modebtn { display: inline-flex; align-items: center; gap: 10px; margin: 18px 0 0 10px; padding: 9px 14px; border: 1px solid var(--line); border-radius: 10px; background: none; color: var(--muted); font: 12px var(--mono); cursor: pointer; } .modebtn:hover { color: var(--ink); }
+    .modebtn i { position: relative; width: 28px; height: 16px; border-radius: 8px; background: #3a3a3d; transition: background .2s; } .modebtn i::after { content: ""; position: absolute; top: 2px; left: 2px; width: 12px; height: 12px; border-radius: 50%; background: #d7d7d2; transition: transform .2s; }
+    .modebtn[aria-pressed="true"] { color: var(--ink); } .modebtn[aria-pressed="true"] i { background: var(--accent); } .modebtn[aria-pressed="true"] i::after { transform: translateX(12px); background: #0c0c0d; } .modebtn:disabled { opacity: .4; cursor: default; }
+    @media (max-width: 700px) { .top { padding: 32px 16px 24px; } .rail { gap: 20px; padding: 8px 16px 40px; } .phone-body { transform-origin: 0 0; } }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div>
+      <p class="kicker">RUBERI · мобильная версия</p>
+      <h1>RUBERI<i>.</i> в телефоне</h1>
+      <nav class="nav"><a href="index.html">← О прототипе</a><a href="home.html">Десктоп</a><a href="system.html">Дизайн-система</a></nav>
+      <div class="themes" role="tablist" aria-label="Дизайн"><button type="button" data-theme="lime">Лайм</button><button type="button" data-theme="ruby">Рубин</button><button type="button" data-theme="night">Ночь</button><button type="button" data-theme="dock">Док</button><button type="button" data-theme="apple">Apple</button><button type="button" data-theme="google">Google</button></div>
+      <button type="button" class="modebtn" aria-pressed="false"><i aria-hidden="true"></i>Тёмная тема</button>
+    </div>
+    <p>Экраны живые: листаются и нажимаются прямо в рамке, переходы между ними работают. Сценарий слева направо: искать → выбрать → написать → купить; дальше — избранное, подача и профиль.</p>
+  </header>
+
+  <main class="rail" id="rail"></main>
+
+  <script>
+    const screens = [
+      ["home.html", "Главная", "01", "Одна строка. Пишет примеры сама, пока поле не тронули; короткий запрос достраивается чипами «+ цена», «+ рядом»."],
+      ["search.html", "Поиск", "02", "«Понимаю так» — каждый параметр правится отдельно. Сводка рынка, 4 главных фильтра, остальные — за «Ещё 14»."],
+      ["category.html?c=cars", "Категория", "03", "Тот же шаблон на самой тяжёлой категории: 54 характеристики, на виду четыре."],
+      ["product.html?id=skoda1", "Объявление", "04", "Цена к рынку, расстояние, быстрые вопросы продавцу. Одна главная кнопка — закреплена внизу."],
+      ["chats.html?to=skoda1", "Чат с продавцом", "05", "Объявление закреплено сверху, быстрые вопросы в один тап, напоминание про безопасную оплату."],
+      ["checkout.html?id=ip1", "Покупка с доставкой", "06", "Безопасная сделка в четыре шага: деньги продавцу — только после проверки."],
+      ["favorites.html", "Избранное", "07", "Объявления и сохранённые поиски с уведомлениями."],
+      ["sell.html?kind=car&demo=1", "Подача: автомобиль", "08", "Фото + госномер → готовый черновик. Человеку — два вопроса: пробег и состояние."],
+      ["profile.html", "Профиль", "09", "Мои объявления, подсказка по цене, настройки."],
+    ];
+    // тема общая с прототипом: хранится в localStorage, экраны в рамках читают её сами
+    const KEY = "ruberi:theme"; const BG = { lime: "#fbfbf9", ruby: "#fffaf8", night: "#0e0f12", dock: "#f2f1ed", apple: "#eef0f6", google: "#fdf8ff" };
+    const fromUrl = new URLSearchParams(location.search).get("theme");
+    const getTheme = () => { try { return JSON.parse(localStorage.getItem(KEY)) || "lime"; } catch { return "lime"; } };
+    if (BG[fromUrl]) { try { localStorage.setItem(KEY, JSON.stringify(fromUrl)); } catch {} }
+    const BGD = { lime: "#0f0f10", ruby: "#150d10", night: "#0e0f12", dock: "#111113", apple: "#0a0a0d", google: "#141218" };
+    const MKEY = "ruberi:mode"; const getMode = () => { try { return JSON.parse(localStorage.getItem(MKEY)) || "light"; } catch { return "light"; } };
+    const isDark = (t) => t === "night" || getMode() === "dark" || (getMode() === "auto" && matchMedia("(prefers-color-scheme: dark)").matches);
+    const paint = () => { const t = BG[getTheme()] ? getTheme() : "lime"; const dark = isDark(t); const mb = document.querySelector(".modebtn"); mb.setAttribute("aria-pressed", String(dark)); mb.disabled = t === "night"; mb.title = t === "night" ? "«Ночь» — всегда тёмная" : ""; document.querySelectorAll(".themes button").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.theme === t))); document.querySelectorAll(".phone-screen, .phone iframe").forEach((el) => { el.style.background = (dark ? BGD : BG)[t]; }); };
+    document.querySelector(".themes").addEventListener("click", (e) => { const b = e.target.closest("[data-theme]"); if (!b) return; try { localStorage.setItem(KEY, JSON.stringify(b.dataset.theme)); } catch {} paint(); document.querySelectorAll(".phone iframe").forEach((f) => { f.contentWindow.location.reload(); }); });
+
+    // режим экраны в рамках подхватывают сами (событие storage) — без перезагрузки
+    document.querySelector(".modebtn").addEventListener("click", () => { const t = BG[getTheme()] ? getTheme() : "lime"; try { localStorage.setItem(MKEY, JSON.stringify(isDark(t) ? "light" : "dark")); } catch {} paint(); });
+    addEventListener("storage", (e) => { if (e.key === MKEY || e.key === KEY) paint(); });
+    document.getElementById("rail").innerHTML = screens.map(([src, name, n, note]) => `
+      <section class="phone">
+        <div class="phone-body"><div class="phone-screen"><iframe src="${src}${src.includes("?") ? "&" : "?"}embed=live" title="${name}" loading="lazy"></iframe></div></div>
+        <div class="phone-cap"><b>${name}</b><span>${n}</span></div>
+        <p class="phone-note">${note}</p>
+      </section>`).join("");
+    paint();
+  </script>
+</body>
+</html>

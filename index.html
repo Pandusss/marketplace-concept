@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RUBERI · прототип</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Onest:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg: #0e0e0f; --card: #17171a; --ink: #f2f1ec; --muted: #8f8e88; --line: #2a2a2e; --accent: #c8f03c; --mono: "JetBrains Mono", ui-monospace, monospace; }
+    * { box-sizing: border-box; } body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 "Onest", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; } h1, h2, h3, p, ul { margin: 0; padding: 0; } ul { list-style: none; }
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    .top { padding: 72px 0 56px; border-bottom: 1px solid var(--line); }
+    .logo { font-size: 24px; font-weight: 700; letter-spacing: -.01em; } .logo i { font-style: normal; color: var(--accent); }
+    h1 { margin-top: 28px; max-width: 940px; font-size: clamp(38px, 5.4vw, 72px); line-height: 1; letter-spacing: -.045em; font-weight: 600; }
+    .lede { margin-top: 24px; max-width: 680px; font-size: 18px; color: #c4c3bd; }
+    .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+    .cta a { display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 22px; border-radius: 12px; border: 1px solid #3a3a40; font-weight: 500; } .cta a:hover { border-color: var(--ink); }
+    .cta a.main { background: var(--accent); border-color: var(--accent); color: #0d0d0e; font-weight: 600; } .cta a.main:hover { filter: brightness(1.05); } .cta small { font: 11px var(--mono); opacity: .6; }
+    .principles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 56px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+    .principles li { padding: 20px; background: var(--bg); font-size: 14px; color: #c4c3bd; } .principles b { display: block; margin-bottom: 6px; color: var(--ink); font-weight: 600; font-size: 15px; } .principles i { display: block; margin-bottom: 14px; font: normal 11px var(--mono); color: var(--muted); }
+
+    .block { padding: 72px 0; border-bottom: 1px solid var(--line); }
+    .block-head { display: flex; justify-content: space-between; align-items: end; gap: 32px; flex-wrap: wrap; margin-bottom: 36px; }
+    .block h2 { max-width: 760px; font-size: clamp(28px, 3.4vw, 44px); line-height: 1.06; letter-spacing: -.035em; font-weight: 600; }
+    .block-head p { max-width: 420px; font-size: 15px; color: #c4c3bd; }
+    .shots { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+    .shot { display: block; } .shot-frame { position: relative; overflow: hidden; aspect-ratio: 10 / 13; border-radius: 12px; background: var(--card); box-shadow: 0 0 0 1px var(--line); transition: .25s; }
+    .shot:hover .shot-frame { transform: translateY(-4px); box-shadow: 0 0 0 1px #55554f, 0 24px 48px -24px #000; }
+    .shot iframe { position: absolute; top: 0; left: 0; width: 1440px; height: 1872px; border: 0; transform-origin: 0 0; pointer-events: none; }
+    .shot span { display: flex; justify-content: space-between; margin-top: 12px; font: 12px var(--mono); color: var(--muted); } .shot:hover span { color: var(--ink); }
+    .shot p { margin-top: 4px; font-size: 13px; line-height: 1.45; color: var(--muted); }
+    .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .grid3 div { padding: 24px; border-radius: 14px; background: var(--card); font-size: 15px; color: #c4c3bd; } .grid3 b { display: block; margin-bottom: 8px; color: var(--ink); font-size: 17px; font-weight: 600; } .grid3 a { color: var(--ink); box-shadow: 0 1px 0 #55554f; } .grid3 a:hover { box-shadow: 0 1px 0 var(--accent); }
+    .designs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px 24px; } .design h3 em { margin-left: 4px; padding: 3px 9px; border-radius: 99px; background: var(--accent); color: #0d0d0e; font: normal 500 11px var(--mono); }
+    .design-frame { position: relative; overflow: hidden; aspect-ratio: 16 / 11; border-radius: 14px; background: var(--card); box-shadow: 0 0 0 1px var(--line); transition: .25s; } .design:hover .design-frame { transform: translateY(-4px); box-shadow: 0 0 0 1px #55554f, 0 24px 48px -24px #000; }
+    .design-frame iframe { position: absolute; top: 0; left: 0; width: 1440px; height: 990px; border: 0; transform-origin: 0 0; pointer-events: none; }
+    .design h3 { display: flex; align-items: center; gap: 10px; margin-top: 16px; font-size: 20px; letter-spacing: -.02em; font-weight: 600; } .design h3 i { width: 14px; height: 14px; border-radius: 50%; }
+    .design p { margin-top: 6px; font-size: 14px; color: #c4c3bd; } .design-links { display: flex; gap: 14px; margin-top: 12px; font: 12px var(--mono); } .design-links a { color: var(--ink); box-shadow: 0 1px 0 #55554f; } .design-links a:hover { box-shadow: 0 1px 0 var(--accent); }
+    .honest { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; } .honest div { padding: 24px; border-radius: 14px; border: 1px solid var(--line); font-size: 15px; color: #c4c3bd; } .honest b { display: block; margin-bottom: 10px; color: var(--ink); font-size: 17px; font-weight: 600; } .honest li { padding: 6px 0 6px 18px; position: relative; } .honest li::before { content: ""; position: absolute; left: 0; top: 15px; width: 6px; height: 6px; border-radius: 2px; background: var(--accent); } .honest .todo li::before { background: #55554f; }
+    .foot { padding: 32px 0 56px; font: 12px var(--mono); color: var(--muted); } .foot a { color: var(--ink); }
+    @media (max-width: 1000px) { .shots { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 900px) { .wrap { padding: 0 16px; } .top { padding: 48px 0 40px; } .principles { grid-template-columns: 1fr 1fr; } .block { padding: 48px 0; } .shots { grid-template-columns: 1fr 1fr; } .grid3, .honest, .designs { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="top"><div class="wrap">
+    <div class="logo">RUBERI<i>.</i></div>
+    <h1>Объявления, которые ищутся одной строкой</h1>
+    <p class="lede">Пишешь как в мессенджере — «айфон 13 про до 60 тысяч рядом» — и видишь, как тебя поняли: каждый параметр отдельным чипом, каждый правится в один тап. Каталог на тысячи категорий остаётся под капотом.</p>
+    <nav class="cta">
+      <a class="main" href="mobile.html">Смотреть в телефоне <small>9 экранов</small></a>
+      <a href="home.html">Десктоп-прототип</a>
+      <a href="system.html">Дизайн-система</a>
+      <a href="#designs">Шесть дизайнов</a>
+    </nav>
+    <ul class="principles">
+      <li><i>01</i><b>Один главный ход на экран</b>На главной — искать. В объявлении — написать продавцу. В подаче — загрузить фото. Остальное тише.</li>
+      <li><i>02</i><b>Каталог — в схеме, не в интерфейсе</b>Один шаблон категории. Фильтры приходят из данных: 4 главных на виду, остальные за одной кнопкой.</li>
+      <li><i>03</i><b>Ноль промо-шума</b>Без сторис, баннеров и каруселей. Лента объявлений — и есть главная.</li>
+      <li><i>04</i><b>Доверие — одной строкой</b>Цена к рынку, расстояние, рейтинг и защита сделки — рядом с ценой, без плашек.</li>
+    </ul>
+  </div></header>
+
+  <section class="block"><div class="wrap">
+    <div class="block-head" id="designs"><h2>Шесть дизайнов одного продукта</h2><p>Экраны, сценарии и поведение одинаковые. «Лайм», «Рубин» и «Ночь» — визуальные языки одной компоновки. «Док», «Apple» и «Google» — свои компоновки: строка внизу экрана, Liquid Glass и Material 3. Выбранный дизайн запоминается и действует на весь прототип. У каждого дизайна есть тёмная тема: переключатель «Тёмная» в верхней панели прототипа, в витрине телефонов и в профиле («Оформление»: светлая, тёмная, как в системе). «Ночь» тёмная всегда.</p></div>
+    <div class="designs">
+      <div class="design"><a href="home.html?theme=lime"><div class="design-frame"><iframe loading="lazy" src="home.html?embed=1&theme=lime" title="Лайм" tabindex="-1"></iframe></div></a><h3><i style="background:#c8f03c"></i>Лайм</h3><p>Монохром и один кислотный акцент. Плотная сетка, гротеск Onest, моноширинные метаданные. Самый «инструментальный» и быстрый на вид.</p><div class="design-links"><a href="home.html?theme=lime">десктоп →</a><a href="mobile.html?theme=lime">телефон →</a></div></div>
+      <div class="design"><a href="home.html?theme=ruby"><div class="design-frame"><iframe loading="lazy" src="home.html?embed=1&theme=ruby" title="Рубин" tabindex="-1"></iframe></div></a><h3><i style="background:#d90f57"></i>Рубин</h3><p>Тёплый белый, рубиновый акцент от имени бренда, округлые формы и мягкие тени, Manrope. Дружелюбный, массовый, ближе к привычным потребительским сервисам.</p><div class="design-links"><a href="home.html?theme=ruby">десктоп →</a><a href="mobile.html?theme=ruby">телефон →</a></div></div>
+      <div class="design"><a href="home.html?theme=night"><div class="design-frame"><iframe loading="lazy" src="home.html?embed=1&theme=night" title="Ночь" tabindex="-1"></iframe></div></a><h3><i style="background:#b9a5ff"></i>Ночь</h3><p>Тёмный графит, лавандовый акцент, геометрическая Geologica в тонких начертаниях. Технологичный, «премиальный»; фото товаров на тёмном выглядят ярче.</p><div class="design-links"><a href="home.html?theme=night">десктоп →</a><a href="mobile.html?theme=night">телефон →</a></div></div>
+      <div class="design"><a href="home.html?theme=dock"><div class="design-frame"><iframe loading="lazy" src="home.html?embed=1&theme=dock" title="Док" tabindex="-1"></iframe></div></a><h3><i style="background:#3347ff"></i>Док <em>другая компоновка</em></h3><p>Строка поиска — в плавающем доке внизу экрана, под большим пальцем; док всегда держит главное действие: поиск, «Написать», сообщение в чате. Главная — бенто-плитки и мозаика, поиск — список с превью справа, объявление — фото-мозаика и колонка для чтения. Unbounded, ультрамарин, большие радиусы.</p><div class="design-links"><a href="home.html?theme=dock">десктоп →</a><a href="search.html?theme=dock">поиск с превью →</a><a href="mobile.html?theme=dock">телефон →</a></div></div>
+      <div class="design"><a href="home.html?theme=apple"><div class="design-frame"><iframe loading="lazy" src="home.html?embed=1&theme=apple" title="Apple" tabindex="-1"></iframe></div></a><h3><i style="background:#007aff"></i>Apple <em>Liquid Glass · другая компоновка</em></h3><p>Своя компоновка в духе iOS 26 Liquid Glass: плавающая стеклянная навигация и tab bar-капсула, главная — коллаж фото со стеклянной панелью поиска, категории — «иконки приложений», объявление — фото во весь экран и стеклянный лист. Палитра и шрифты — по HIG, на iPhone и Mac берётся системный SF Pro.</p><div class="design-links"><a href="home.html?theme=apple">десктоп →</a><a href="mobile.html?theme=apple">телефон →</a></div></div>
+      <div class="design"><a href="home.html?theme=google"><div class="design-frame"><iframe loading="lazy" src="home.html?embed=1&theme=google" title="Google" tabindex="-1"></iframe></div></a><h3><i style="background:#5b3fd4"></i>Google <em>Material 3 Expressive</em></h3><p>Язык Android 16 и Pixel, а не Gmail: фото и иконки в фирменных формах M3 — печенье, клевер, арка; крупные скруглённые заголовки Google Sans Flex, плавающая панель навигации и большой FAB «Продать». Кнопки при нажатии меняют форму. Все фото квадратные, ничего не растянуто. Палитра — динамическая схема M3 от фиолетового.</p><div class="design-links"><a href="home.html?theme=google">десктоп →</a><a href="search.html?theme=google">поиск →</a><a href="mobile.html?theme=google">телефон →</a></div></div>
+    </div>
+  </div></section>
+
+  <section class="block"><div class="wrap">
+    <div class="block-head"><h2>Десять экранов, всё кликается</h2><p>Превью живые — это сам прототип в уменьшении. Избранное, чаты и город сохраняются между экранами, как в настоящем продукте.</p></div>
+    <div class="shots" id="shots"></div>
+  </div></section>
+
+  <section class="block"><div class="wrap">
+    <div class="block-head"><h2>Как 50 характеристик на категорию перестают быть стеной</h2></div>
+    <div class="grid3">
+      <div><b>1. Наверху — только четыре</b>Какие именно — решает статистика использования, а не дизайнер. Один и тот же экран категории работает на <a href="category.html?c=phones">смартфонах</a>, <a href="category.html?c=cars">автомобилях</a> и <a href="category.html?c=flats">квартирах</a> — меняется только схема данных.</div>
+      <div><b>2. Остальное — за одной кнопкой, с поиском</b>«Ещё 50» открывает панель, где характеристики свёрнуты и ищутся по названию: «привод», «балкон», «АКБ».</div>
+      <div><b>3. Запрос словами → фильтры</b>Строка сама раскладывает фразу на модель, цену, радиус и доставку. Короткий запрос («айфон») достраивается подсказками «+ цена», «+ рядом». В отличие от чат-ассистентов, здесь видно, что именно понято, и ничего не нужно переспрашивать.</div>
+    </div>
+  </div></section>
+
+  <section class="block" style="border:0"><div class="wrap">
+    <div class="block-head"><h2>Что в прототипе настоящее, а что — макет</h2></div>
+    <div class="honest">
+      <div><b>Работает</b><ul>
+        <li>Разбор запроса на чипы, удаление и правка каждого параметра, подсказки для короткого запроса</li>
+        <li>Один шаблон категории на трёх разных схемах, панель «все фильтры» с поиском</li>
+        <li>Поиск по демо-объявлениям: результаты, сводка цен и пустое состояние зависят от запроса</li>
+        <li>Подача объявления: вещь, автомобиль и квартира; правка распознанных полей, публикация</li>
+        <li>Чаты с ответами продавца, избранное и сохранённые поиски, оформление с доставкой, профиль, выбор города</li>
+        <li>Адаптив: телефон, планшет, десктоп</li>
+      </ul></div>
+      <div class="todo"><b>Сымитировано или ещё не нарисовано</b><ul>
+        <li>Распознавание фото и госномера — заготовленный сценарий; разбор запроса — правила, в продукте это будет модель</li>
+        <li>Объявления, цены, продавцы и счётчики — демо-данные; фото — с Wikimedia Commons</li>
+        <li>Оплата, звонки, верификация через Госуслуги, ответы продавцов — имитация без сервера; состояние хранится в браузере</li>
+        <li>Вход и регистрация, уведомления, споры по сделке — следующие экраны</li>
+        <li>Логотип — рабочий набор шрифтом, не финальный знак</li>
+      </ul></div>
+    </div>
+  </div></section>
+
+  <footer class="foot"><div class="wrap">Фото: Wikimedia Commons, см. <a href="CREDITS.md">CREDITS.md</a></div></footer>
+
+  <script>
+    const screens = [
+      ["home.html", "", "Главная", "Одна строка, категории и лента рядом."],
+      ["search.html", "", "Поиск", "«Понимаю так», сводка рынка, 4 фильтра."],
+      ["category.html", "c=cars", "Категория", "Тот же шаблон на автомобилях."],
+      ["product.html", "id=skoda1", "Объявление", "Цена к рынку, быстрые вопросы продавцу."],
+      ["sell.html", "kind=car&demo=1", "Подача", "Фото и госномер → готовый черновик."],
+      ["chats.html", "", "Чаты", "Переписка с закреплённым объявлением."],
+      ["checkout.html", "id=ip1", "Покупка с доставкой", "Безопасная сделка в четыре шага."],
+      ["favorites.html", "", "Избранное", "Объявления и сохранённые поиски."],
+      ["profile.html", "", "Профиль", "Мои объявления и настройки."],
+      ["seller.html", "id=s3", "Продавец", "Рейтинг, отзывы, другие объявления."],
+    ];
+    document.getElementById("shots").innerHTML = screens.map(([file, q, name, note]) => `
+      <a class="shot" href="${file}${q ? "?" + q : ""}"><div class="shot-frame"><iframe loading="lazy" src="${file}?${q ? q + "&" : ""}embed=1" title="${name}" tabindex="-1"></iframe></div><span><b>${name}</b><i>открыть →</i></span><p>${note}</p></a>`).join("");
+    const fit = () => document.querySelectorAll(".shot-frame, .design-frame").forEach((f) => { f.firstElementChild.style.transform = `scale(${f.clientWidth / 1440})`; });
+    fit(); addEventListener("resize", fit);
+  </script>
+</body>
+</html>

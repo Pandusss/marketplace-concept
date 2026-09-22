@@ -1,0 +1,100 @@
+/* Темы дизайна RUBERI. Разметка, структура и поведение — общие; здесь меняется только визуальный язык:
+   палитра, шрифты, форма, характер поверхностей. Базовая тема «Лайм» живёт в concept-a.css. */
+
+/* ---- общее для всех тем: акцентные поверхности берут цвета из токенов ---- */
+[data-variant="a"] {
+  :is(.tok-price, .a-attr-ask, .a-hintrow, .a-safe li:last-child, .a-save.on, .a-proof-tabs a[aria-selected="true"], .a-cats a:hover, .a-pop button:hover, .a-quick button:hover, .a-quick a:hover, .tok-add:hover, .a-drop:hover, .a-thread-quick button:hover) { background: var(--accent-block); color: var(--on-accent-block); }
+  .tok-price { border-color: var(--accent-block); } .a-save.on { border-color: var(--accent-block); }
+  :is(.a-head-nav sup, .a-tabbar sup, .a-chatrow sup, .a-ava, .a-done > i) { background: var(--accent); color: var(--on-accent); }
+  .a-scan-log li::before { background: var(--accent); color: var(--on-accent); }
+  :is(.a-tag, .a-seller b i) { background: var(--good); color: var(--on-good); }
+  .a-attr-ask small, .a-safe li:last-child b { color: inherit; }
+}
+
+/* =====================================================================
+   «РУБИН» — светлая, тёплая, округлая. Акцент — рубиновый (от имени RUBERI).
+   Крупные акцентные блоки — мягкая розовая подложка, сплошной рубин — только для главного действия.
+   ===================================================================== */
+[data-variant="a"][data-theme="ruby"] {
+  --bg: #fffaf8; --surface: #ffffff; --ink: #1f1418; --muted: #75636a; --line: #f1e4e2; --ph: #f7ecea;
+  --accent: #d90f57; --accent-deep: #d90f57; --on-accent: #ffffff; --accent-block: #ffe4ec; --on-accent-block: #8f0a3a;
+  --good: #dcf5e6; --on-good: #0e5a35; --good-bar: #35b777;
+  --cta: #d90f57; --cta-ink: #ffffff; --focus: #d90f57; --line-strong: #e6d2d0; --placeholder: #bba9ae; --on-ink-muted: #d9c9cd; --on-ink-line: #4a3a40;
+  --r: 16px; --r-pill: 999px; --font: "Manrope", system-ui, sans-serif; --mono: "Manrope", system-ui, sans-serif;
+
+  /* форма: всё интерактивное — «пилюли», карточки — с большим радиусом и мягкой тенью */
+  .a-cta, .a-cta2, .a-head-nav .a-sell, .a-more, .a-pill > button, .a-sort > button, .a-pill-more, .a-save, .tok, .tok-add, .a-try button, .a-try a, .a-quick button, .a-quick a, .a-thread-quick button, .a-kind, .a-kind a, .a-kind button, .a-row-actions > *, .a-modal-opts button, .a-presets button, .a-attr-ask button, .a-proof-tabs a, .a-hintrow button, .a-verify button, .a-watch-side .a-cta-auto { border-radius: 999px; }
+  .a-card-img, .a-gallery-main, .a-draft-main, .a-scan-photo { border-radius: 22px; } .a-thumbs button, .a-done-card .ph, .a-watch-thumbs .ph, .a-myitem-ph .ph, .a-chatrow .ph, .a-thread-item .ph, .a-order-item .ph { border-radius: 14px; }
+  .a-market, .a-watch, .a-order, .a-stats, .a-reviews li, .a-safe, .a-options button, .a-field input, .a-field textarea, .a-field-cat, .a-attr-ask, .a-hintrow, .a-attrs > button.ok, .a-proof, .a-drop, .a-modal-box, .a-pop, .a-how li, .a-done-card { border-radius: 22px; }
+  .a-market, .a-watch, .a-order, .a-reviews li, .a-done-card, .a-stats { border-color: transparent; box-shadow: 0 1px 2px rgba(90, 30, 45, .06), 0 14px 34px -20px rgba(90, 30, 45, .28); }
+  .a-tag, .a-seller b i { border-radius: 999px; padding: 3px 9px; font-weight: 700; letter-spacing: .02em; }
+
+  /* типографика: гротеск помягче, без моноширинного — метаданные тем же шрифтом */
+  h1, h2, .a-price strong, .a-market strong, .a-card-row strong { font-weight: 800; }
+  .a-hero h1, .a-page-head h1, .a-cat-head h1, .a-sell-hero h1, .a-done h1, .a-checkout-h, .a-me-head h1, .a-empty h1 { letter-spacing: -.045em; }
+  .a-logo { font-weight: 800; letter-spacing: .01em; } .a-logo i, .a-foot i { color: var(--accent); }
+  .a-card p, .a-crumbs, .a-block-head span, .a-market small, .a-understood > span, .a-try span, .a-field > span, .a-facts small, .a-info h2, .a-form-status em, .a-row-main small, .a-stats small { letter-spacing: 0; font-weight: 500; }
+  .a-understood > span, .a-try span, .a-field > span, .a-market small, .a-facts small, .a-info h2, .a-stats small { text-transform: none; font-size: 13px; }
+
+  /* главное действие — рубин; чёрный остаётся для «что ищем» и выбранных состояний */
+  .a-cta, .a-head-nav .a-sell, .a-more, .a-ask button, .a-say button, .a-drop i, .a-tabbar .a-tab-sell i, .a-hintrow button, .a-verify button { background: var(--accent); color: #fff; }
+  .a-cta:hover, .a-head-nav .a-sell:hover { color: #fff; filter: brightness(.93); } .a-more { border: 0; }
+  .a-fav.on { background: var(--accent); color: #fff; } .a-fav { border-radius: 50%; }
+  .a-field-cat { background: var(--accent-block); color: var(--on-accent-block); } .a-field-cat button { color: var(--accent); font-weight: 700; }
+
+  /* строка поиска: без жёсткой рамки, на мягкой тени; фокус — рубиновое кольцо */
+  .a-head { border-bottom-color: transparent; box-shadow: 0 1px 0 var(--line); }
+  .a-ask input { border: 0; border-radius: 999px; padding-left: 30px; box-shadow: 0 0 0 1.5px var(--line-strong), 0 22px 44px -26px rgba(217, 15, 87, .45); } .a-ask input:focus { box-shadow: 0 0 0 2px var(--accent), 0 22px 44px -26px rgba(217, 15, 87, .45); }
+  .a-ask button { border-radius: 50%; } .a-ask-sm input { box-shadow: 0 0 0 1.5px var(--line-strong); }
+  .a-head-search input, .a-say input, .a-plate input { border-radius: 999px; } .a-say input, .a-plate input { border-color: var(--line-strong); } .a-say button { border-radius: 50%; }
+  .a-cats { border: 0; gap: 8px; } .a-cats a { border: 0; border-radius: 999px; background: var(--surface); box-shadow: 0 0 0 1px var(--line); padding: 14px 20px; }
+  .a-subs { border-top-color: var(--line); } .a-rows { border-top-color: var(--line); } .a-info { border-top-color: var(--line); } .a-order-total { border-top-color: var(--line); }
+  .a-drop { border-color: var(--accent); border-width: 2px; } .a-pop { border-color: var(--line); }
+  .a-options button.on, .a-presets button.on { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); } .a-options button.on::before { border-color: var(--accent); background: #fff; }
+  .a-switch input:checked + i { background: var(--accent); } .a-switch input:checked + i::after { background: #fff; }
+  .a-watch-thumbs .new::after { background: var(--accent); box-shadow: 0 0 0 2px var(--surface); }
+  .a-form-status i { background: var(--accent); box-shadow: none; border-radius: 50%; }
+  .a-fair-bar i { background: var(--accent); } .a-hist i.in { background: var(--accent); }
+  .a-msg.me p { background: var(--accent); } .a-msg p { border-radius: 22px 22px 22px 6px; } .a-msg.me p { border-radius: 22px 22px 6px 22px; }
+  .a-tabbar a[aria-current] i { color: var(--accent); }
+  .a-head-nav .a-me { border-radius: 50%; } .a-ava { border-radius: 50%; } .a-ava-lg { border-radius: 50%; }
+  .sheet-opts button.on, .a-modal-opts button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+}
+
+/* =====================================================================
+   «НОЧЬ» — тёмный графит, лавандовый акцент, геометрический шрифт.
+   Светлое на тёмном; главное действие — акцентом, а не белым.
+   ===================================================================== */
+[data-variant="a"][data-theme="night"] {
+  --bg: #0e0f12; --surface: #17181c; --ink: #f1f0ec; --muted: #9d9c97; --line: #26272d; --ph: #1e1f24;
+  --accent: #b9a5ff; --accent-deep: #b9a5ff; --on-accent: #120f1f; --accent-block: #b9a5ff; --on-accent-block: #120f1f;
+  --good: #8ff0c4; --on-good: #06281a; --good-bar: #8ff0c4;
+  --cta: #b9a5ff; --cta-ink: #120f1f; --focus: #b9a5ff; --line-strong: #3a3b43; --placeholder: #6d6c69; --on-ink-muted: #56554f; --on-ink-line: #c9c8c2; --fav-bg: rgba(241, 240, 236, .94);
+  --r: 12px; --r-pill: 10px; --font: "Geologica", system-ui, sans-serif;
+  color-scheme: dark;
+
+  h1, h2 { font-weight: 500; } .a-hero h1, .a-page-head h1, .a-cat-head h1, .a-sell-hero h1, .a-done h1, .a-checkout-h, .a-me-head h1, .a-empty h1 { letter-spacing: -.05em; font-weight: 500; }
+  .a-price strong, .a-market strong, .a-card-row strong, .a-stats strong { font-weight: 500; } .a-logo { font-weight: 600; letter-spacing: .04em; }
+  body, .a-card h3, .a-info p { font-weight: 300; } .a-card h3 { color: #d6d5d0; }
+
+  /* главное действие — лаванда; «чернильные» блоки базовой темы здесь становятся светлыми плашками */
+  .a-cta, .a-head-nav .a-sell, .a-ask button, .a-say button, .a-drop i, .a-tabbar .a-tab-sell i, .a-hintrow button, .a-verify button, .sheet-apply { background: var(--accent); color: var(--on-accent); }
+  .a-cta:hover, .a-head-nav .a-sell:hover { color: var(--on-accent); filter: brightness(1.08); }
+  .a-fav { color: #0e0f12; } .a-fav.on { background: var(--accent); color: var(--on-accent); }
+  .a-field-cat button { color: var(--bg); border-bottom: 1px solid currentColor; } .a-proof b { color: var(--bg); }
+  .a-attr-ask button { color: var(--ink); } .a-attr-ask button.on { color: var(--bg); } .a-attr-ask .a-ask-input input { color: var(--ink); }
+
+  .a-ask input { border-color: var(--line-strong); box-shadow: 0 0 0 1px transparent, 0 30px 60px -30px rgba(185, 165, 255, .35); } .a-ask input:focus { border-color: var(--accent); }
+  .a-say input, .a-plate input, .a-drop { border-color: var(--line-strong); } .a-drop:hover { border-color: var(--accent-block); }
+  .a-cats { border-top-color: var(--line-strong); } .a-subs, .a-rows, .a-info, .a-order-total, .a-head-nav, .c-x { border-top-color: var(--line-strong); }
+  .a-card-img, .a-gallery-main, .a-watch-thumbs .ph { box-shadow: 0 0 0 1px var(--line); }
+  .a-pop { border-color: var(--line-strong); box-shadow: 0 24px 48px -20px #000; } .a-modal-box { box-shadow: 0 0 0 1px var(--line-strong), 0 40px 80px -30px #000; }
+  .a-fair-bar { background: linear-gradient(90deg, var(--good-bar) 0 33%, var(--line-strong) 33% 66%, #4a4b55 66%); }
+  .a-switch i::after { background: #d7d6d1; } .a-switch input:checked + i { background: var(--accent); } .a-switch input:checked + i::after { background: var(--on-accent); }
+  .a-options button.on::before { border-color: var(--accent); background: var(--on-accent); } .a-options button.on, .a-presets button.on { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+  .a-watch-thumbs .new::after { box-shadow: 0 0 0 2px var(--surface); } .a-form-status i { box-shadow: none; }
+  .a-msg.me p { background: var(--accent); color: var(--on-accent); }
+  .a-tabbar a[aria-current] i { color: var(--accent); }
+  .a-head-search kbd { border-color: var(--line-strong); }
+  .a-hist i.in { background: var(--accent); opacity: .9; }
+}

@@ -1,0 +1,166 @@
+/* Тёмная тема для каждого дизайна RUBERI. Режим — html[data-mode="dark"], ставит core.js (переключатель в панели прототипа и в профиле).
+   Дизайн и структура те же, меняются палитра и поверхности. «Ночь» тёмная по определению и здесь не участвует.
+   Селекторы на один атрибут сильнее светлых — тёмные правила всегда побеждают, порядок подключения не важен. */
+html[data-mode="dark"] { color-scheme: dark; }
+
+/* =====================================================================
+   ЛАЙМ · тёмная — графит и тот же лайм. Главное действие — лаймом, «чернильные» блоки становятся светлыми плашками.
+   ===================================================================== */
+[data-variant="a"][data-mode="dark"][data-theme="lime"] {
+  --bg: #0f0f10; --surface: #19191b; --ink: #f1f1ec; --muted: #9c9c94; --line: #29292c; --ph: #222225;
+  --accent: #c8f03c; --accent-deep: #c8f03c; --on-accent: #0d0d0e; --accent-block: #c8f03c; --on-accent-block: #0d0d0e;
+  --good: #c8f03c; --on-good: #0d0d0e; --good-bar: #c8f03c;
+  --cta: #c8f03c; --cta-ink: #0d0d0e; --focus: #c8f03c; --line-strong: #3a3a3e; --placeholder: #6d6d68; --on-ink-muted: #55554f; --on-ink-line: #c9c9c2; --fav-bg: rgba(241, 241, 236, .94);
+}
+
+/* =====================================================================
+   РУБИН · тёмная — тёплый тёмно-винный фон, яркий рубин, светло-розовые акцентные плашки.
+   ===================================================================== */
+[data-variant="a"][data-mode="dark"][data-theme="ruby"] {
+  --bg: #150d10; --surface: #1f1519; --ink: #f8ecef; --muted: #b59ca5; --line: #34242a; --ph: #2a1d22;
+  --accent: #ff4f8b; --accent-deep: #ff4f8b; --on-accent: #22000d; --accent-block: #ffb8cd; --on-accent-block: #3d0016;
+  --good: #9ef0c0; --on-good: #06281a; --good-bar: #4fd38e;
+  --cta: #ff4f8b; --cta-ink: #22000d; --focus: #ff4f8b; --line-strong: #4a343c; --placeholder: #7d6870; --on-ink-muted: #5e4a51; --on-ink-line: #d9c5cb; --fav-bg: rgba(248, 236, 239, .94);
+
+  .a-market, .a-watch, .a-order, .a-reviews li, .a-done-card, .a-stats { box-shadow: 0 0 0 1px var(--line); }
+  .a-ask input { box-shadow: 0 0 0 1.5px var(--line-strong), 0 22px 44px -26px rgba(255, 79, 139, .4); } .a-ask input:focus { box-shadow: 0 0 0 2px var(--accent), 0 22px 44px -26px rgba(255, 79, 139, .4); }
+  .a-drop { border-color: var(--accent); } .a-drop:hover { border-color: var(--accent-block); }
+}
+
+/* ---- общее для тёмных Лайма и Рубина: те же правила, что проверены на «Ночи» ---- */
+[data-variant="a"][data-mode="dark"]:is([data-theme="lime"], [data-theme="ruby"]) {
+  .a-cta, .a-head-nav .a-sell, .a-more, .a-ask button, .a-say button, .a-drop i, .a-tabbar .a-tab-sell i, .a-hintrow button, .a-verify button, .sheet-apply { background: var(--accent); color: var(--on-accent); }
+  .a-cta:hover, .a-head-nav .a-sell:hover { color: var(--on-accent); filter: brightness(1.08); }
+  .a-fav { color: #0e0f12; } .a-fav.on { background: var(--accent); color: var(--on-accent); }
+  .a-field-cat button { color: var(--bg); border-bottom: 1px solid currentColor; } .a-proof b { color: var(--bg); }
+  .a-attr-ask button { color: var(--ink); } .a-attr-ask button.on { color: var(--bg); } .a-attr-ask .a-ask-input input { color: var(--ink); }
+  .sheet-opts button.on, .a-modal-opts button.on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+  .a-ask input { border-color: var(--line-strong); } .a-ask input:focus { border-color: var(--accent); }
+  .a-say input, .a-plate input, .a-drop { border-color: var(--line-strong); } .a-drop:hover { border-color: var(--accent-block); }
+  .a-cats { border-top-color: var(--line-strong); } .a-subs, .a-rows, .a-info, .a-order-total, .a-head-nav, .c-x { border-top-color: var(--line-strong); }
+  .a-card-img, .a-gallery-main, .a-watch-thumbs .ph { box-shadow: 0 0 0 1px var(--line); }
+  .a-pop { border-color: var(--line-strong); box-shadow: 0 24px 48px -20px #000; } .a-modal-box { box-shadow: 0 0 0 1px var(--line-strong), 0 40px 80px -30px #000; }
+  .a-fair-bar { background: linear-gradient(90deg, var(--good-bar) 0 33%, var(--line-strong) 33% 66%, #4a4b55 66%); }
+  .a-switch i::after { background: #d7d6d1; } .a-switch input:checked + i { background: var(--accent); } .a-switch input:checked + i::after { background: var(--on-accent); }
+  .a-options button.on::before { border-color: var(--accent); background: var(--on-accent); } .a-options button.on, .a-presets button.on { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+  .a-watch-thumbs .new::after { box-shadow: 0 0 0 2px var(--surface); } .a-form-status i { box-shadow: none; }
+  .a-msg.me p { background: var(--accent); color: var(--on-accent); }
+  .a-tabbar a[aria-current] i { color: var(--accent); }
+  .a-head-search kbd { border-color: var(--line-strong); }
+  .a-hist i.in { background: var(--accent); opacity: .9; }
+}
+
+/* подсказка «Один шаблон — любая категория» (категория): в светлой теме это тёмная плашка, в тёмной — поверхность с рамкой */
+[data-variant="a"][data-mode="dark"]:is([data-theme="lime"], [data-theme="ruby"], [data-theme="dock"]) {
+  .a-proof { background: var(--surface); color: var(--muted); box-shadow: 0 0 0 1px var(--line); } .a-proof b { color: var(--accent-deep); }
+  .a-proof-tabs a { border-color: var(--line-strong); color: var(--ink); }
+}
+[data-variant="a"][data-mode="dark"][data-theme="dock"] .d-price { background: rgba(28, 28, 32, .86); color: var(--ink); }
+
+/* кнопки на акцентной плашке («проверен», подсказка о цене): плашка и кнопка в Лайме и «Ночи» одного цвета — кнопку делаем тёмной */
+[data-variant="a"]:is([data-mode="dark"][data-theme="lime"], [data-theme="night"]) :is(.a-verify button, .a-hintrow button) { background: var(--on-accent-block); color: var(--accent-block); }
+
+/* =====================================================================
+   ДОК · тёмная — почти чёрный фон, карточки-графит, док светлее фона, ультрамарин ярче.
+   ===================================================================== */
+[data-variant="a"][data-mode="dark"][data-theme="dock"] {
+  --bg: #111113; --surface: #1c1c20; --ink: #f2f1ed; --muted: #9b9a95; --line: #2a2a2f; --ph: #26262b;
+  --accent: #5b6cff; --accent-deep: #7d8aff; --on-accent: #ffffff; --accent-block: #262d63; --on-accent-block: #c9cfff;
+  --good: #143b25; --on-good: #7fe0a6; --good-bar: #2fb673;
+  --cta: #5b6cff; --cta-ink: #ffffff; --focus: #7d8aff; --line-strong: #3a3a40; --placeholder: #6b6a66; --on-ink-muted: #55554f; --on-ink-line: #c9c8c2; --fav-bg: rgba(242, 241, 237, .94);
+
+  .d-me { color: #111113; }
+  .d-dock { background: rgba(38, 38, 44, .92); box-shadow: 0 24px 60px -18px #000, 0 0 0 1px rgba(255, 255, 255, .09) inset; }
+  .d-ic:hover, .d-ic[aria-current] { background: #3a3a42; }
+  .d-dock-search input { background: #313138; } .d-dock-search input:focus { background: #3a3a42; }
+  .d-dock-sell, .d-dock .tok-what, .d-dock .tok-add:hover { color: #111113; }
+  .d-dock .tok { background: #313138; border-color: #45454d; }
+  .d-try button:hover { background: var(--ink); color: #111113; }
+  .a-fav { color: #111113; }
+  .a-attr-ask button.on, .a-pill.set > button, .tok-what, .a-kind [aria-selected="true"], .a-modal-opts button.on { color: #111113; }
+}
+
+/* =====================================================================
+   APPLE · тёмная — как iOS в тёмном режиме: чёрный «обой» с глубокими пятнами цвета, дымчатое стекло, системные цвета dark.
+   ===================================================================== */
+[data-variant="a"][data-mode="dark"][data-theme="apple"] {
+  --bg: #0a0a0d; --surface: #1c1c1e; --ink: #f5f5f7; --muted: #98989d; --line: #38383a; --ph: #2c2c2e;
+  --accent: #0a84ff; --accent-deep: #409cff; --on-accent: #ffffff; --accent-block: rgba(10, 132, 255, .2); --on-accent-block: #64b5ff;
+  --good: rgba(48, 209, 88, .18); --on-good: #30d158; --good-bar: #30d158;
+  --cta: #0a84ff; --cta-ink: #ffffff; --focus: #0a84ff; --line-strong: #48484a; --placeholder: #6e6e73; --on-ink-muted: #6e6e73; --on-ink-line: #d1d1d6; --fav-bg: rgba(44, 44, 46, .6);
+  --sep: rgba(84, 84, 88, .55);
+  --glass: rgba(34, 34, 38, .5); --glass-strong: rgba(40, 40, 44, .72);
+  --glass-fx: blur(24px) saturate(180%) brightness(.92);
+  --glass-shadow: inset 0 1px 0 rgba(255, 255, 255, .14), inset 0 -1px 1px rgba(255, 255, 255, .05), inset 0 0 18px rgba(255, 255, 255, .03), 0 1px 2px rgba(0, 0, 0, .3), 0 18px 44px -18px rgba(0, 0, 0, .8);
+  --tint: linear-gradient(180deg, #3a9bff, #0a7aff);
+  --g-fill: rgba(118, 118, 128, .24); --g-fill-2: rgba(118, 118, 128, .32); --g-raise: rgba(58, 58, 62, .85);
+
+  .glass::before { background: linear-gradient(145deg, rgba(255, 255, 255, .34), rgba(255, 255, 255, .08) 30%, rgba(255, 255, 255, 0) 52%, rgba(255, 255, 255, .05) 72%, rgba(255, 255, 255, .22)); }
+  .glass::after { background: radial-gradient(120% 80% at 18% -10%, rgba(255, 255, 255, .1), rgba(255, 255, 255, 0) 55%); }
+  .g-bg { background: radial-gradient(42% 38% at 8% 4%, rgba(40, 90, 255, .42), transparent 70%), radial-gradient(38% 36% at 96% 8%, rgba(200, 40, 140, .3), transparent 70%),
+      radial-gradient(45% 40% at 88% 96%, rgba(20, 160, 130, .3), transparent 70%), radial-gradient(40% 40% at 4% 92%, rgba(220, 120, 20, .24), transparent 70%), #0a0a0d; }
+
+  .g-nav-search input { background: var(--g-fill); color: var(--ink); } .g-nav-search input:focus { background: rgba(58, 58, 62, .95); box-shadow: 0 0 0 3px rgba(10, 132, 255, .4); }
+  .g-geo:hover, .g-ic:hover { background: rgba(255, 255, 255, .1); }
+  .g-tabbar a { color: #d1d1d6; } .g-tabbar a[aria-current] { color: #409cff; background: rgba(255, 255, 255, .14); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16), 0 2px 10px -2px rgba(0, 0, 0, .5); } .g-tabbar a:not([aria-current]):hover { background: rgba(255, 255, 255, .07); }
+  .g-spot { background: rgba(24, 24, 28, .5); }
+  .g-field input { background: rgba(44, 44, 48, .9); color: var(--ink); box-shadow: inset 0 0 0 .5px rgba(255, 255, 255, .08), 0 4px 16px -6px rgba(0, 0, 0, .5); } .g-field input:focus { box-shadow: 0 0 0 4px rgba(10, 132, 255, .4); }
+  .tok { background: var(--g-raise); box-shadow: inset 0 0 0 .5px rgba(255, 255, 255, .08); } .tok-what { background: var(--ink); color: #000; }
+  .tok-add { background: rgba(255, 255, 255, .06); box-shadow: inset 0 0 0 1px rgba(10, 132, 255, .45); } .tok-add:hover { background: rgba(255, 255, 255, .14); }
+  .g-try button { background: rgba(255, 255, 255, .08); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1); } .g-try button:hover { background: rgba(255, 255, 255, .16); }
+  .g-app-icon { box-shadow: inset 0 0 0 .5px rgba(255, 255, 255, .1), 0 10px 22px -12px #000; }
+  .g-good, .g-bar-price .g-fair-low { color: #30d158; }
+  .g-filters .a-pill.set > button { color: #000; }
+  .g-hero, .g-card-img { box-shadow: 0 30px 60px -30px #000; }
+  .g-sheet { background: rgba(14, 14, 18, .8); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 -24px 48px -30px #000; } .g-sheet::before { background: rgba(235, 235, 245, .3); }
+  .g-cell, .g-list { background: rgba(44, 44, 46, .72); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06); }
+  .g-pricecard { background: rgba(44, 44, 46, .6); }
+  .g-quick a { background: rgba(10, 132, 255, .18); color: #409cff; } .g-quick a:hover { background: rgba(10, 132, 255, .28); }
+  .g-btn-gray { background: var(--g-fill); color: #409cff; } .g-btn-gray:hover { background: var(--g-fill-2); }
+  .g-btn-clear { background: rgba(255, 255, 255, .1); color: #409cff; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12); }
+  .g-link { color: #409cff; }
+
+  .a-field input, .a-field textarea, .a-say input, .a-plate input, .a-ask input { background: rgba(44, 44, 48, .85); box-shadow: inset 0 0 0 .5px rgba(255, 255, 255, .08); }
+  .a-field input:focus, .a-field textarea:focus, .a-say input:focus, .a-plate input:focus, .a-ask input:focus { box-shadow: 0 0 0 4px rgba(10, 132, 255, .4); }
+  .a-cta2, .a-pill > button, .a-sort > button, .a-pill-more, .a-save, .a-row-actions > *, .a-quick a, .a-quick button, .a-thread-quick button, .a-try a, .a-try button, .a-modal-opts button, .a-proof-tabs a, .a-watch-side .a-cta-auto { background: var(--g-fill); color: #409cff; }
+  .a-cta2:hover, .a-row-actions > *:hover, .a-quick a:hover, .a-thread-quick button:hover { background: var(--g-fill-2); color: #409cff; }
+  .a-watch-side .a-cta.a-cta-auto { color: #fff; }
+  .a-kind [aria-selected="true"] { background: #636366; color: #fff; box-shadow: 0 3px 10px rgba(0, 0, 0, .4), inset 0 1px 0 rgba(255, 255, 255, .12); }
+  .a-switch i { background: rgba(120, 120, 128, .32); } .a-switch input:checked + i { background: #30d158; }
+  .a-attr-ask { background: rgba(10, 132, 255, .16); color: #64b5ff; } .a-attr-ask button { background: var(--g-raise); color: var(--ink); } .a-attr-ask button.on { background: var(--accent); color: #fff; }
+  .a-hintrow, .a-thread-safe { background: rgba(255, 214, 10, .14); color: #ffd60a; } .a-safe li:last-child { background: rgba(48, 209, 88, .16); color: #30d158; }
+  .a-form-status i { background: #30d158; } .a-fair-bar i { box-shadow: 0 0 0 3px #1c1c1e, 0 2px 6px rgba(0, 0, 0, .5); }
+  .a-watch-thumbs .new::after { background: #ff453a; box-shadow: 0 0 0 2px #1c1c1e; }
+  .a-msg p { background: var(--g-raise); box-shadow: inset 0 0 0 .5px rgba(255, 255, 255, .06); }
+  .a-chatrow.on, .a-chatrow:hover { background: rgba(255, 255, 255, .09); }
+  .a-pop { background: rgba(40, 40, 44, .86); } .a-pop button:hover { background: rgba(10, 132, 255, .2); }
+  .a-modal-box { background: rgba(28, 28, 30, .9); }
+  .a-fav.on { background: #ff453a; }
+  .g-ic sup, .g-tabbar sup { background: #ff453a; }
+}
+
+/* =====================================================================
+   GOOGLE · тёмная — тёмная схема M3 от того же фиолетового сида: surface #141218, primary #CBBEFF,
+   тональные контейнеры приглушены, формы и движение те же.
+   ===================================================================== */
+[data-variant="a"][data-mode="dark"][data-theme="google"] {
+  --m-primary: #cbbeff; --m-on-primary: #2e1386; --m-primary-c: #4429b8; --m-on-primary-c: #e6deff;
+  --m-secondary-c: #4a4458; --m-on-secondary-c: #e9e2f8; --m-tertiary: #ffafd3; --m-tertiary-c: #71284d; --m-on-tertiary-c: #ffd8e8;
+  --m-good: #8fd9a6; --m-good-c: #0f5229; --m-on-good-c: #c7efd2; --m-warn-c: #544600; --m-on-warn-c: #f7e58c;
+  --m-error: #ffb4ab; --m-on-error: #690005; --m-surface: #141218; --m-sc-lowest: #0f0d13; --m-sc-low: #1d1b20; --m-sc: #211f26; --m-sc-high: #2b2930; --m-sc-highest: #36343b;
+  --m-on-surface: #e6e0e9; --m-on-surface-v: #cac4d0; --m-outline: #948f99; --m-outline-v: #49454f; --m-inverse: #e6e0e9; --m-on-inverse: #322f35;
+  --m-e1: 0 1px 2px rgba(0, 0, 0, .4), 0 1px 3px 1px rgba(0, 0, 0, .25); --m-e2: 0 2px 6px rgba(0, 0, 0, .4), 0 6px 18px rgba(0, 0, 0, .35); --m-e3: 0 4px 10px rgba(0, 0, 0, .45), 0 12px 32px rgba(0, 0, 0, .45);
+  --m-hover: inset 0 0 0 100vmax rgba(230, 224, 233, .08); --m-hover-p: inset 0 0 0 100vmax rgba(203, 190, 255, .1); --m-hover-on: inset 0 0 0 100vmax rgba(46, 19, 134, .1);
+  --m-fav-bg: rgba(43, 41, 48, .88); --m-fair-track: rgba(199, 239, 210, .18);
+  --m-t0c: #4429b8; --m-t0o: #e6deff; --m-t1c: #6a3a1f; --m-t1o: #ffdbc9; --m-t2c: #1f5133; --m-t2o: #c7efd2; --m-t3c: #544600; --m-t3o: #f7e58c; --m-t4c: #71284d; --m-t4o: #ffd8e8; --m-t5c: #1e4a73; --m-t5o: #cfe5ff;
+  --ph: var(--m-sc-high); --placeholder: #8c8696; --on-ink-muted: #7b7586; --on-ink-line: #cac4d0;
+
+  .m-dest:hover .m-ind { box-shadow: inset 0 0 0 100vmax rgba(230, 222, 255, .1); }
+  .m-fairbox .a-fair-bar i { background: var(--m-good); }
+  .m-promo-shape, .m-brand-mark { background: var(--m-primary); color: var(--m-on-primary); }
+  .m-card-media, .m-gal-main { background: var(--m-sc); }
+}
+
+/* ---- переключатель в профиле («Оформление»): сегменты во всю ширину строки на телефоне ---- */
+[data-variant="a"] .a-row-mode .a-kind.a-mode { margin: 0; } [data-variant="a"] .a-row-mode .a-mode button:disabled { opacity: .45; cursor: default; }
+@media (max-width: 760px) { [data-variant="a"] .a-row-mode .a-kind.a-mode { display: flex; flex-basis: 100%; } [data-variant="a"] .a-row-mode .a-mode > * { flex: 1; justify-content: center; text-align: center; } }
